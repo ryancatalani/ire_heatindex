@@ -3,3 +3,6 @@ source 'https://rubygems.org'
 
 gem 'twitter'
 gem 'dotenv'
+gem 'pry', group: :development
+gem 'tzinfo'
+gem 'tzinfo-data'
