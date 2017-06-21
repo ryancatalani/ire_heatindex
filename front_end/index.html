@@ -13,12 +13,15 @@
 
 
 	<div class="wrap">
-		<h1>#IRE17 Heat Index</h1>
+		<h1>The #IRE17 Heat Index</h1>
 
 		<div id="display_text"></div>
 
 		<p>
-			The heat index is calculated based on the percentage of <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">#IRE17 tweets</a> that, in the last hour, have mentioned <a href="https://www.google.com/search?q=phoenix+weather&tbm=nws" target="_blank">the weather</a>.
+			Why? In the last hour, <span id="latest_percent"></span>% of <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">#IRE17 tweets</a> have mentioned <a href="https://www.google.com/search?q=phoenix+weather&tbm=nws" target="_blank">the weather in Phoenix</a>. The heat index is calculated based on that. (<a href="#" id="show_how">How?</a>)
+		</p>
+		<p id="how" style="display:none">
+			The number of tweets that mention certain weather keywords and use the hashtag #IRE17 are divided by the number of tweets that just use #IRE17. This ratio (between 0 and 1) is squared and multiplied by 100. Since this value is between 0 and 100, it's sort of like the Celsius scale (which is based on 0° as the freezing point of water and 100° as the boiling point). So this value is then "converted" to Fahrenheit (by multiplying by 1.8 and adding 32), then rounded. See the code on <a href="#" target="_blank">GitHub</a>.
 		</p>
 		<p>
 			Here’s the percentage of tweets that have mentioned the weather, per hour, since Wednesday, June 21. Times are in Mountain Time.

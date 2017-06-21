@@ -6,6 +6,10 @@ $(function(){
 		var display_text = data.display_text;
 		$('#display_text').html(display_text);
 
+		var latest_results = data.results[data.results.length - 1];
+		var latest_percent = Math.round(latest_results.result * 100);
+		$('#latest_percent').text(latest_percent);
+
 
 		var trendChartValues = [];
 		for (var i = 0; i < data.results.length; i++) {
@@ -55,6 +59,12 @@ $(function(){
 				}
 			}
 		});
+	});
+
+	$('#show_how').click(function(e) {
+		e.preventDefault();
+		$('#how').slideToggle();
+		return false;
 	});
 
 	function decToTemp(dec) {
