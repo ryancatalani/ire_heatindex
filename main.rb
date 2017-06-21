@@ -80,7 +80,7 @@ if search.count > 0
 
 	# Filter
 
-	regex = /\bhot\b|heat|temp|deg|warm|melt|sun|lava|inside|outside|fire|\bac\b|a\.c\.|forecast|inferno|cook|bake|cool|cold|weather|1[0-9][0-9]|🔥|🌞|☀️|🌡️/
+	regex = /\bhot\b|heat|temp|deg|balmy|warm|melt|sun|lava|inside|outside|fire|\bac\b|a\.c\.|forecast|inferno|cook|bake|cool|cold|weather|1[0-9][0-9]|🔥|🌞|☀️|🌡️/
 	matching = search.select{|t| t.text =~ regex }
 	matching_binned = matching.group_by{|t| tz.utc_to_local(t.created_at).strftime(bin_format) }
 	matching_totals = Hash[matching_binned.map{|k,v| [k, v.count]}]
