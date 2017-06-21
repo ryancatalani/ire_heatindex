@@ -2,17 +2,28 @@ require 'dotenv/load'
 require 'twitter'
 require 'pry'
 require 'tzinfo'
+require 'aws-sdk'
+require 'json'
 
-fname = "results.json"
+fname = "ire_heatindex/results.json"
 calculated_results = {}
 bins = []
 last_id = nil
 
 # Read existing data
 
-if File.file?(fname)
-	existing_file = File.read(fname)
-	existing_data = JSON.parse(existing_file)
+s3 = Aws::S3::Resource.new(
+  credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
+  region: 'us-east-1'
+)
+
+s3_obj = s3.bucket(ENV['S3_BUCKET']).object(fname)
+
+# if File.file?(fname)
+if s3_obj.exists?
+	# existing_file = File.read(fname)
+	# existing_data = JSON.parse(existing_file)
+	existing_data = JSON.parse(s3_obj.get.body.read)
 	calculated_results = existing_data['results']
 	last_id = existing_data['last_id']
 end
@@ -89,9 +100,11 @@ if search.count > 0
 		results: calculated_results
 	}
 
-	File.open(fname, 'w') do |f|
-		f.puts JSON.pretty_generate(json)
-	end
+	# File.open(fname, 'w') do |f|
+	# 	f.puts JSON.pretty_generate(json)
+	# end
+
+	s3_obj.put(body: JSON.pretty_generate(json), acl: 'public-read')
 
 else
 
