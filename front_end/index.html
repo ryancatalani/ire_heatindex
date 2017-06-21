@@ -6,22 +6,34 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-	<div id="display_text"></div>
 
-	<canvas id="trend_chart"></canvas>
+	<div class="wrap">
+		<h1>#IRE17 Heat Index</h1>
+
+		<div id="display_text"></div>
+
+		<p>
+			The heat index is calculated based on the percentage of <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">#IRE17 tweets</a> that, in the last hour, have mentioned <a href="https://www.google.com/search?q=phoenix+weather&tbm=nws" target="_blank">the weather</a>.
+		</p>
+		<p>
+			Here’s the percentage of tweets that have mentioned the weather, per hour, since Wednesday, June 21. Times are in Mountain Time.
+		</p>
+
+		<canvas id="trend_chart"></canvas>	
+	</div>
+	
 
 	<footer>
-		Weather data <a href="https://darksky.net/poweredby/" target="_blank">powered by Dark Sky</a>.
+		<a href="#" target="_blank">Open source</a>. By <a href="http://ryancatalani.com" target="_blank">Ryan Catalani</a> (<a href="https://twitter.com/magicofpi" target="_blank">@magicofpi</a>). Weather data <a href="https://darksky.net/poweredby/" target="_blank">powered by Dark Sky</a>.
 	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-	<script src="https://use.fontawesome.com/abe5b38225.js"></script>
 	<script src="main.js"></script>
 	
 </body>

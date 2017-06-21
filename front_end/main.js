@@ -9,7 +9,7 @@ $(function(){
 
 		var trendChartValues = [];
 		for (var i = 0; i < data.results.length; i++) {
-			var value = data.results[i].result * 100;
+			var value = Math.round(data.results[i].result * 100);
 			trendChartValues.push(value);
 		};
 
@@ -20,8 +20,39 @@ $(function(){
 				labels: data.labels,
 				datasets: [{
 					label: '% of #IRE17 tweets mentioning the weather',
-					data: trendChartValues
+					data: trendChartValues,
+					borderColor: '#fff',
+					fill: false,
+					pointBorderColor: '#fff',
+					pointBackgroundColor: '#fff'
 				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						gridLines: {
+							color: 'rgba(255,255,255,0.25)',
+							zeroLineColor: 'rgba(255,255,255,0.5)'
+						},
+						ticks: {
+							fontColor: '#fff',
+							fontFamily: "'Source Sans Pro', sans-serif"
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							color: 'rgba(255,255,255,0.25)',
+							zeroLineColor: 'rgba(255,255,255,0.5)'
+						},
+						ticks: {
+							fontColor: '#fff',
+							fontFamily: "'Source Sans Pro', sans-serif"
+						}
+					}]
+				},
+				legend: {
+					display: false
+				}
 			}
 		});
 	});
