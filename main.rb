@@ -4,14 +4,17 @@ require 'tzinfo'
 require 'aws-sdk'
 require 'json'
 require 'httparty'
+require 'time'
 # require 'pry'
 
-USE_LOCAL = true
+USE_LOCAL = false
 
 fname = "results.json"
 calculated_results = {}
 bins = []
 last_id = nil
+
+bin_format = "%Y%m%d-%H"
 
 # Read existing data
 
@@ -79,12 +82,12 @@ if search.count > 0
 
 	regex = /\bhot\b|heat|temp|deg|warm|melt|sun|lava|inside|outside|fire|\bac\b|a\.c\.|forecast|inferno|cook|bake|cool|cold|weather|1[0-9][0-9]|🔥|🌞|☀️|🌡️/
 	matching = search.select{|t| t.text =~ regex }
-	matching_binned = matching.group_by{|t| tz.utc_to_local(t.created_at).strftime("%Y%m%d-%H") }
+	matching_binned = matching.group_by{|t| tz.utc_to_local(t.created_at).strftime(bin_format) }
 	matching_totals = Hash[matching_binned.map{|k,v| [k, v.count]}]
 
 	# Calculate
 
-	all_binned = search.group_by{|t| tz.utc_to_local(t.created_at).strftime("%Y%m%d-%H") }
+	all_binned = search.group_by{|t| tz.utc_to_local(t.created_at).strftime(bin_format) }
 	all_totals = Hash[all_binned.map{|k,v| [k, v.count]}]
 
 	bins.each do |dayhour|
@@ -125,14 +128,19 @@ last_tw_value = calculated_results[calculated_results.keys.last]['result']
 last_tw_temp = ((Math.sqrt(last_tw_value) * 100) * 1.8 + 32).round
 last_tw_temp_greater = last_tw_temp > current_temp
 
-display_text = 'Right now in Phoenix, it’s '
+display_text = 'Right now in Phoenix, it’s <span class="temp">'
 display_text += current_temp.round.to_s
-display_text += '°F, '
+display_text += '°F</span>, '
 display_text += last_tw_temp_greater ? 'but ' : 'and '
-display_text += 'on IRE Twitter, it feels '
+display_text += 'on <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">IRE Twitter</a>, it feels '
 display_text += last_tw_temp_greater ? 'more like ' : 'like only '
+display_text += '<span class="temp">'
 display_text += last_tw_temp.to_s
-display_text += '°F.'
+display_text += '°</span>.'
+
+# Set up chart labels
+
+chart_labels = bins.map{|l| Time.strptime(l, bin_format).strftime("%b %-d, %l %P") }
 
 # Store
 
@@ -140,7 +148,7 @@ json = {
 	last_id: last_id,
 	current_temp: current_temp,
 	display_text: display_text,
-	labels: bins,
+	labels: chart_labels,
 	results: calculated_results.map{|k,v| { time: k }.merge(v) }
 }
 

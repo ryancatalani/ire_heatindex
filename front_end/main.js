@@ -4,7 +4,26 @@ $(function(){
 		console.log(data);
 
 		var display_text = data.display_text;
-		$('#display_text').text(display_text);
+		$('#display_text').html(display_text);
+
+
+		var trendChartValues = [];
+		for (var i = 0; i < data.results.length; i++) {
+			var value = data.results[i].result * 100;
+			trendChartValues.push(value);
+		};
+
+		var trendCtx = document.getElementById("trend_chart").getContext('2d');
+		var trendChart = new Chart(trendCtx, {
+			type: 'line',
+			data: {
+				labels: data.labels,
+				datasets: [{
+					label: '% of #IRE17 tweets mentioning the weather',
+					data: trendChartValues
+				}]
+			}
+		});
 	});
 
 	function decToTemp(dec) {

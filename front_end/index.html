@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>#IRE17 Heat Index</title>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>#IRE17 Heat Index</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
 
 	<div id="display_text"></div>
 
+	<canvas id="trend_chart"></canvas>
 
 	<footer>
 		Weather data <a href="https://darksky.net/poweredby/" target="_blank">powered by Dark Sky</a>.
 	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 	<script src="https://use.fontawesome.com/abe5b38225.js"></script>
 	<script src="main.js"></script>
 	

@@ -1,1 +1,35 @@
 @import 'reset';
+
+$yellow: #F2B500;
+
+body {
+	background-color: $yellow;
+	color: #fff;
+	font: 16px/1.2em 'Source Sans Pro', sans-serif;
+	text-align: center;
+}
+
+#display_text {
+	font-weight: 300;
+	font-size: 40px;
+	line-height: 1em;
+	.temp {
+		background-color: #fff;
+		color: $yellow;
+	}
+	a {
+		&:link, &:visited {
+			color: #fff;
+			text-decoration: none;
+		}
+		&:hover, &:active {
+			cursor: pointer;
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+}
+
+#trend_chart {
+	width: 500px;
+	height: 500px;
+}

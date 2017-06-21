@@ -1,7 +1,7 @@
 {
-  "last_id": 877627430365573121,
+  "last_id": 877629569058062336,
   "current_temp": 114.65,
-  "display_text": "Right now in Phoenix, it’s 115°F, but on IRE Twitter, it feels more like 125°F.",
+  "display_text": "Right now in Phoenix, it’s <span class=\"temp\">115</span>°F, but on <a href=\"https://twitter.com/search?f=tweets&vertical=default&q=%23ire17\" target=\"_blank\">IRE Twitter</a>, it feels more like <span class=\"temp\">122</span>°F.",
   "labels": [
     "20170621-00",
     "20170621-01",
@@ -100,8 +100,8 @@
     {
       "time": "20170621-13",
       "matching": 9,
-      "all": 34,
-      "result": 0.2647
+      "all": 36,
+      "result": 0.25
     }
   ]
 }
