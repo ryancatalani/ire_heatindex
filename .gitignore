@@ -18,3 +18,5 @@ xcuserdata
 CVS
 
 .env
+.sass-cache/
+*.css.map

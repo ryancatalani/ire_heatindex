@@ -7,3 +7,5 @@ gem 'pry', group: :development
 gem 'tzinfo'
 gem 'tzinfo-data'
 gem 'aws-sdk', '~> 2'
+gem 'sass'
+gem 'httparty'
