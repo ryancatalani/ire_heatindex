@@ -31,7 +31,7 @@
 		<div id="display_text"></div>
 
 		<p>
-			Why? In the last hour, <span id="latest_percent"></span>% of <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">#IRE17 tweets</a> have mentioned <a href="https://www.google.com/search?q=phoenix+weather&tbm=nws" target="_blank">the weather in Phoenix</a>. The heat index is calculated based on that. (<a href="#" id="show_how">How?</a>)
+			Why? In the last hour, about <span id="latest_percent"></span>% of <a href="https://twitter.com/search?f=tweets&vertical=default&q=%23ire17" target="_blank">#IRE17 tweets</a> have mentioned <a href="https://www.google.com/search?q=phoenix+weather&tbm=nws" target="_blank">the weather in Phoenix</a>. The heat index is calculated based on that. (<a href="#" id="show_how">How?</a>)
 		</p>
 		<p id="how" style="display:none">
 			The number of tweets that mention certain weather keywords and use the hashtag #IRE17 are divided by the number of tweets that just use #IRE17. This ratio (between 0 and 1) is squared and multiplied by 100. Since this value is between 0 and 100, it's sort of like the Celsius scale (which is based on 0° as the freezing point of water and 100° as the boiling point). So this value is then "converted" to Fahrenheit (by multiplying by 1.8 and adding 32), then rounded. See the code on <a href="https://github.com/ryancatalani/ire_heatindex" target="_blank">GitHub</a>.
@@ -52,5 +52,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 	<script src="main.js"></script>
 	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-101497881-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 </html>
